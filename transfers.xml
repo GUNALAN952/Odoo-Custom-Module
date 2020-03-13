@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="transfer_tree" model="ir.ui.view">
+        <field name="name">Money.Transfer.tree</field>
+        <field name="model">transfers.name</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+        <tree string ="money_transfers">
+            <field name ="transfers_Name"/>
+            <field name ="transfers_ISO"/>
+            <field name ="transfers_amount"/>
+            <field name ="notes"/>
+        </tree>
+    </record>
+
+
+    <record id="money_transfer" model="ir.ui.view">
+        <field name="name">Money.Transfer.form</field>
+        <field name="model">transfers.name</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string ="money_transfers">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name ="transfers_Name"/>
+                        </group>
+                    	<group>
+                            <field name ="transfers_ISO"/>
+			</group>
+		    </group>
+                    <group>
+                        <field name ="transfers_amount"/>
+                        <field name ="notes"/>
+                        <field name ="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_transfers" model="ir.actions.act_window">
+        <field name="name">Transfers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">transfers.name</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create your first transfer
+            </p>            
+        </field>
+    </record>
+    <menuitem id ="transfers_root" name ="Transfers" sequence ="0" web_icon="transfers,static/description/icon.png" />  
+    <menuitem id ="transfers_name" name ="Transfers_Name" parent="transfers_root" action="action_transfers"/> 
+</odoo>
